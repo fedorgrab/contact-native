@@ -1,0 +1,12 @@
+{
+  "name": "contact-native",
+  "displayName": "contact-native",
+  "expo": {
+    "name": "contact-native",
+    "slug": "contact-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
