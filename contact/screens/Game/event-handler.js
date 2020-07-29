@@ -1,4 +1,5 @@
 import {GAME_EVENT} from "./events";
+import server from "../../server";
 
 let gameStateDispatch
 let gameScreenDispatch
@@ -33,5 +34,8 @@ export function handleGameEvents(event, room, user, gameStateDispatchCallback, g
 export function handleGameErrors(errorType, errorMessage, gameScreenDispatch) {
   if (errorType === "action") {
     gameScreenDispatch({type: "showErrorModal", errorMessage})
+  } else {
+    server.log(`Application Handled game rule error: '${errorMessage}'`)
+    .then(() => console.log("Logged to server"))
   }
 }

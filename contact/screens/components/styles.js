@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     borderBottomWidth: 1.25,
     borderBottomColor: "#A09C98",
-    marginTop: 25,
+    marginTop: 10,
     color: "#4B4845"
   },
   loginInputError: {
@@ -21,7 +21,12 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     borderBottomWidth: 1.25,
     borderBottomColor: "#FA7268",
-    marginTop: 25
+    marginTop: 10
+  },
+  errorText: {
+    fontSize: 15,
+    fontFamily: "Roboto",
+    color: "#FA7268"
   },
   inputView: {
     borderBottomWidth: 2,
@@ -42,6 +47,20 @@ export const styles = StyleSheet.create({
   menuButtonContainer: {
     position: "relative",
     alignItems: "center",
-    marginTop: 40,
   },
+  linkText: {
+    color: "#FA7268",
+    marginTop: 16,
+    textDecorationLine: "underline"
+  },
+  infoText: {
+    color: "#4B4845",
+    fontSize: 16
+  },
+  loginNavigateContainer: {
+    alignItems: "center",
+    marginTop: 40
+  },
+  facebookButton:{
+  }
 })

@@ -4,11 +4,15 @@ import {PROJECT_STYLES} from "../../styles";
 export const styles = StyleSheet.create({
   ...PROJECT_STYLES,
   screenContainer: {
-    alignItems: "center"
+    alignItems: "center",
+    height: "100%",
+    justifyContent:"space-between",
+    display: "flex",
+    padding: 32
   },
   contactLogoImage: {
-    top: 20,
-    // position: "absolute"
+    // marginTop: 32,
+    // marginBottom: 32
   },
   signUpContainer: {
     height: "100%",
@@ -16,7 +20,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textInputContainer: {
-    justifyContent: "space-between",
     minWidth:250
   },
   linkText: {

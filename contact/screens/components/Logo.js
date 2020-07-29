@@ -2,9 +2,9 @@ import React from 'react';
 import {View} from "react-native";
 import Svg, {Path} from 'react-native-svg';
 
-const Logo = () => {
+const Logo = ({style}) => {
   return (
-    <View>
+    <View style={style}>
       <Svg width={"275"} height={"80"} viewBox={"0 0 275 80"} fill={"none"}>
         <Path
           d="M78.4504 51.5709C65.2578 67.1621 10.8884 76.7567 0.494347 67.1621C-3.90293 58.7669 22.482 47.4791 22.482 31.5822C22.482 15.6854 72.548 0 88.4448 0C104.342 0 86.4458 35.5799 78.4504 51.5709Z"

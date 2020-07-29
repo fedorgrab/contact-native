@@ -9,7 +9,9 @@ async function request(method, endpoint, body) {
     body: JSON.stringify(body)
   }
   let response = await fetch(`${HOST_ADDR}${endpoint}`, requestOptions)
-  if (response.status === 400) throw {status: 400, message: await response.json()}
+  if (![200, 201].includes(response.status)) {
+    throw {status: response.status, details: await response.json()}
+  }
   return await response.json()
 }
 
@@ -43,4 +45,14 @@ async function getProfile() {
   return await get("/api/users/")
 }
 
-export default {signUp, login, authenticateToken, getProfile}
+async function log(message) {
+  return await post("/api/system/log-message", {"message": message})
+}
+
+function reformatValidationError(error) {
+  const formatted = {}
+  Object.keys(error).map((key, index) => formatted[key] = error[key][0])
+  return formatted
+}
+
+export default {signUp, login, authenticateToken, getProfile, reformatValidationError, log}

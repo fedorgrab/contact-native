@@ -1,13 +1,13 @@
 import {styles} from "./styles";
-import {TextInput, View} from "react-native";
+import {TextInput, View, Text} from "react-native";
 import React from "react";
 
 
-const TextField = ({text, setText, placeholder, error, password = false}) => {
+const TextField = ({text, setText, placeholder, validErrorText, password = false}) => {
   return (
     <View style={setText.inputView}>
       <TextInput
-        style={error ? styles.loginInputError : styles.loginInput}
+        style={validErrorText ? styles.loginInputError : styles.loginInput}
         placeholder={placeholder}
         onChangeText={text => setText(text)}
         defaultValue={text}
@@ -15,6 +15,8 @@ const TextField = ({text, setText, placeholder, error, password = false}) => {
         keyboardType={password ? "default" : "email-address"}
         autoCapitalize={"none"}
       />
+      {validErrorText ? <Text style={styles.errorText}>{validErrorText}</Text> : <></>}
+      {validErrorText ? <></> : <Text style={styles.errorText}>{" "}</Text>}
     </View>
   )
 }
