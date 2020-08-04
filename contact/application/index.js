@@ -14,7 +14,7 @@ const App = () => {
       {fontsLoaded ? (
         <UserContext.Provider value={{user, setUser}}>
           <NavigationContainer>
-            {authorized ? (<AuthorizedStackNavigator/>) : (<UnAuthorizedStackNavigator/>)}
+            {authorized ? <AuthorizedStackNavigator/> : <UnAuthorizedStackNavigator/>}
           </NavigationContainer>
         </UserContext.Provider>
       ) : (<AppLoading/>)

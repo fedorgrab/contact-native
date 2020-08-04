@@ -31,58 +31,58 @@ const gameScreenInitialState = {
   contactAttemptModalVisible: false,
   errorModalVisible: false,
   errorModalMessage: "",
+  finishReasonMessage: "",
+  finishModalVisible: false,
   offerToSend: {definition: ""},
 }
 
 function gameReducer(state, action) {
-  let newState = JSON.parse(JSON.stringify(state))
   switch (action.event) {
     case "start":
-      newState.room = action.room
-      break
+      return {...state, room: action.room}
     case "continue":
-      newState.room = action.room
-      newState.offers = action.room.offers
-      break
+      return {...state, room: action.room, offers: action.room.offers}
     default:
-      newState.room = action.room
-      newState.offers = action.room.offers
+      return {...state, room: action.room, offers: action.room.offers}
   }
-  return newState
 }
 
 
 function gameScreenReducer(state, action) {
-  let newState = JSON.parse(JSON.stringify(state))
   switch (action.type) {
     case "wordModalVisible":
-      newState.wordModalVisible = !state.wordModalVisible
-      break
+      return {...state, wordModalVisible: !state.wordModalVisible}
     case "changeView":
-      newState.view = action.view
-      break
+      return {...state, view: action.view}
     case "offerCancelModalVisible":
-      newState.offerCancelModalVisible = !state.offerCancelModalVisible
-      newState.offerToCancel = action.offerId ? action.offerId : null
-      break
+      return {
+        ...state,
+        offerCancelModalVisible: !state.offerCancelModalVisible,
+        offerToCancel: action.offerId ? action.offerId : null
+      }
     case "contactAttemptModalVisible":
-      newState.contactAttemptModalVisible = !state.contactAttemptModalVisible
-      newState.offerToAccept = action.offerId ? action.offerId : null
-      break
+      return {
+        ...state,
+        contactAttemptModalVisible: !state.contactAttemptModalVisible,
+        offerToAccept: action.offerId ? action.offerId : null
+      }
     case "showErrorModal":
-      if (action.errorMessage) newState.errorModalMessage = action.errorMessage
-      newState.errorModalVisible = true
-      break
+      return {
+        ...state,
+        errorModalVisible: true,
+        errorMessage: action.errorMessage ? action.errorMessage : null
+      }
     case "hideErrorModal":
-      newState.errorModalVisible = false
-      break
+      return {...state, errorModalVisible: false}
     case "setDefinitionToSend":
-      newState.offerToSend.definition = action.definition
-      break
+      return {...state, offerToSend: {definition: action.definition}}
+    case "finishModalVisible":
+      return {...state, finishModalVisible: true, finishReasonMessage: action.message}
+    case "hideFinishModal":
+      return {...state, finishModalVisible: false, finishReasonMessage: ""}
     default:
       throw new Error();
   }
-  return newState
 }
 
 export function useGameReducer() {

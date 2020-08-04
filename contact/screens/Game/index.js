@@ -36,6 +36,14 @@ const Game = ({navigation}) => {
           modalVisible={gameScreenState.errorModalVisible}
           modalOnTouch={() => gameScreenDispatch({type: "hideErrorModal"})}
         />
+        <InfoModal
+          title={gameScreenState.finishReasonMessage}
+          modalVisible={gameScreenState.finishModalVisible}
+          modalOnTouch={() => {
+            gameScreenDispatch({type: "hideFinishModal"})
+            navigation.reset({index: 0, routes: [{name: "Home"}]})
+          }}
+        />
       </GameStateContext.Provider>
     </GameScreenContext.Provider>
   )

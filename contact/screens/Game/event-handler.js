@@ -16,7 +16,18 @@ function startGameEvent(event, room, user) {
   if (room.is_full) setUpView(room, user)
 }
 
+const FINISH_MESSAGES = {
+  "disconnection": "One of the players was disconnected. Game is finished.",
+  "host_won": "Game is finished, host won",
+  "players_won": "Game is finished, players won"
+}
 
+function finishGameEvent(event, room) {
+  gameStateDispatch({event, room})
+  gameScreenDispatch({type: "finishModalVisible", message: FINISH_MESSAGES[room.game_finish_reason]})
+}
+
+//make functions pure
 export function handleGameEvents(event, room, user, gameStateDispatchCallback, gameScreenDispatchCallback) {
   gameStateDispatch = gameStateDispatchCallback
   gameScreenDispatch = gameScreenDispatchCallback
@@ -26,6 +37,8 @@ export function handleGameEvents(event, room, user, gameStateDispatchCallback, g
       return startGameEvent(event, room, user)
     case GAME_EVENT.CONTINUE:
       return startGameEvent(event, room, user)
+    case GAME_EVENT.FINISH:
+      return finishGameEvent(event, room)
     default:
       return gameStateDispatch({event, room})
   }
