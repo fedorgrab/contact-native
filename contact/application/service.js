@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-// import {Font} from "expo";
 import {loadAsync} from "expo-font";
 
 import server from "../server";
@@ -8,7 +7,8 @@ import storage from "../storage";
 export function useAuthorization() {
   const [authorized, setAuthorized] = useState(false)
   useEffect(() => {
-    async function authorizeApp() {
+    // async function authorizeApp() {
+    const authorizeApp = async () => {
       const token = await storage.getAuthToken()
       if (token !== null) {
         try {
@@ -20,8 +20,8 @@ export function useAuthorization() {
         }
       }
     }
+    authorizeApp()
     
-    authorizeApp().then(() => console.log("authorization"))
     return () => console.log("Application Closed")
   }, [])
   return authorized

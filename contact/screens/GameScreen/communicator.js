@@ -1,4 +1,5 @@
-const HOST_ADDR_WS = "ws://10.0.0.223:8003/ws/contact-game";
+// const HOST_ADDR_WS = "ws://10.0.0.223:8003/ws/contact-game";
+const HOST_ADDR_WS = "ws://172.20.10.3:8003/ws/contact-game";
 let websocket;
 
 function openGameConnection() {

@@ -17,9 +17,9 @@ function startGameEvent(event, room, user) {
 }
 
 const FINISH_MESSAGES = {
-  "disconnection": "One of the players was disconnected. Game is finished.",
-  "host_won": "Game is finished, host won",
-  "players_won": "Game is finished, players won"
+  "disconnection": "One of the players was disconnected. GameScreen is finished.",
+  "host_won": "GameScreen is finished, host won",
+  "players_won": "GameScreen is finished, players won"
 }
 
 function finishGameEvent(event, room) {
