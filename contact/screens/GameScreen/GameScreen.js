@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import {useGameReducer, useGameScreenReducer} from "./service";
-import {useConnection, useGameEvent} from "./service";
 import {UserContext} from "../../application/context";
 import {GameStateContext, GameScreenContext,} from "./context";
 import GameSearchView from "./GameSearch";
 import GameHostView from "./GameHostView/GameHostView";
 import GamePlayerView from "./GamePlayerView/GamePlayerView";
 import InfoModal from "./components/InfoModal";
-import {handleGameErrors, handleGameEvents} from "./event-handler";
+import {useGameReducer, useGameScreenReducer} from "./service/reducers";
+import {handleGameErrors, handleGameEvents} from "./service/event-handler";
+import {useConnection, useGameEvent} from "./service/use-connection";
 
 
 const GAME_VIEW_MAPPING = {

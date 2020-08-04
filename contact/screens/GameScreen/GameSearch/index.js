@@ -1,7 +1,7 @@
+import React, {useContext} from 'react';
+import {Button, Text, View} from "react-native";
 import {UserContext} from "../../../application/context";
 import {GameStateContext} from "../context";
-import {Button, Text, View} from "react-native";
-import React, {useContext} from 'react';
 
 const GameSearchView = ({navigation}) => {
   const {user} = useContext(UserContext)

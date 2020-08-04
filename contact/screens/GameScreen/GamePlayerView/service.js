@@ -1,5 +1,5 @@
-import communicator from "../communicator";
-import {GAME_EVENT} from "../events";
+import communicator from "../service/communicator";
+import {GAME_EVENT} from "../service/events";
 
 
 export function contactAttemptOnTouch(offer, gameScreenDispatch) {

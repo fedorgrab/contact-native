@@ -1,19 +1,17 @@
 import {GAME_EVENT} from "./events";
-import server from "../../server";
+import server from "../../../server";
 
-let gameStateDispatch
-let gameScreenDispatch
 
-const setUpView = (room, user) => {
+const setUpView = (room, user, gameStateDispatch, gameScreenDispatch) => {
   const isGameHost = room.game_host_key === user.username
   const view = isGameHost ? "GameHost" : "GamePlayer"
   gameScreenDispatch({type: "changeView", view})
   if (isGameHost && !room.game_is_started) gameScreenDispatch({type: "wordModalVisible"})
 }
 
-function startGameEvent(event, room, user) {
+function startGameEvent(event, room, user, gameStateDispatch, gameScreenDispatch) {
   gameStateDispatch({event, room})
-  if (room.is_full) setUpView(room, user)
+  if (room.is_full) setUpView(room, user, gameStateDispatch, gameScreenDispatch)
 }
 
 const FINISH_MESSAGES = {
@@ -22,23 +20,22 @@ const FINISH_MESSAGES = {
   "players_won": "GameScreen is finished, players won"
 }
 
-function finishGameEvent(event, room) {
+function finishGameEvent(event, room, gameStateDispatch, gameScreenDispatch) {
   gameStateDispatch({event, room})
-  gameScreenDispatch({type: "finishModalVisible", message: FINISH_MESSAGES[room.game_finish_reason]})
+  gameScreenDispatch({
+    type: "finishModalVisible",
+    message: FINISH_MESSAGES[room.game_finish_reason]
+  })
 }
 
-//make functions pure
-export function handleGameEvents(event, room, user, gameStateDispatchCallback, gameScreenDispatchCallback) {
-  gameStateDispatch = gameStateDispatchCallback
-  gameScreenDispatch = gameScreenDispatchCallback
-  
+export function handleGameEvents(event, room, user, gameStateDispatch, gameScreenDispatch) {
   switch (event) {
     case GAME_EVENT.START:
-      return startGameEvent(event, room, user)
+      return startGameEvent(event, room, user, gameStateDispatch, gameScreenDispatch)
     case GAME_EVENT.CONTINUE:
-      return startGameEvent(event, room, user)
+      return startGameEvent(event, room, user, gameStateDispatch, gameScreenDispatch)
     case GAME_EVENT.FINISH:
-      return finishGameEvent(event, room)
+      return finishGameEvent(event, room, gameStateDispatch, gameScreenDispatch)
     default:
       return gameStateDispatch({event, room})
   }

@@ -12,7 +12,7 @@ function openGameConnection() {
 function connectionOnMessage(delegateEventCallback, delegateErrorCallback) {
   websocket.onmessage = (e) => {
     let json = JSON.parse(e.data)
-    if (json["error"]) {
+    if (json.error) {
       let errorMessage = json.data.details
       let errorType = json.data.error_type
       delegateErrorCallback(errorType, errorMessage)
