@@ -6,13 +6,21 @@ export const styles = StyleSheet.create({
   screenContainer: {
     alignItems: "center",
     height: "100%",
-    justifyContent:"space-between",
+    justifyContent: "space-between",
     display: "flex",
     padding: 32
   },
-  contactLogoImage: {
-    // marginTop: 32,
-    // marginBottom: 32
+  contactLogoImage: {},
+  orBlock: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  orText: {
+    marginLeft: 15,
+    marginRight: 15,
+    color: "#4B4845"
   },
   signUpContainer: {
     height: "100%",
@@ -20,19 +28,23 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textInputContainer: {
-    minWidth:250
+    minWidth: 250
   },
   linkText: {
     color: "#FA7268",
-    marginTop: 15,
+    marginLeft: 10,
     textDecorationLine: "underline"
   },
   infoText: {
     color: "#4B4845",
     fontSize: 15
   },
+  facebookButton: {},
   loginNavigateContainer: {
     alignItems: "center",
-    marginTop: 40
+    marginTop: 10,
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row"
   }
 })

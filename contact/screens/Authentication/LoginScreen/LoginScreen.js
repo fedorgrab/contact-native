@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import {View} from "react-native";
-import FacebookButton from "../../components/FacebookButton";
+import {View, Text} from "react-native";
 import TextField from "../../components/TextField";
 import MenuButton from "../../components/MenuButton";
 import Logo from "../../components/Logo";
+import FacebookButton from "../components/FacebookButton";
+import AuthNavigationBlock from "../components/AuthNavigationBlock";
 import {styles} from "../styles";
 import {useValidationHandling} from "../service";
 import {loginOnPress} from "./service";
-import AuthNavigationBlock from "../../components/AuthNavigationBlock";
+import OrDelimiter from "../components/OrDelimiter";
+
 
 const initialErrorsState = {username: "", password: ""}
 
@@ -39,12 +41,13 @@ const LoginScreen = ({navigation}) => {
         title={"Log In"}
         onPress={() => loginOnPress(navigation, username, password, setFormValidErrors)}
       />
-      <FacebookButton/>
       <AuthNavigationBlock
         infoText={"Don't have an account yet?"}
         linkText={"Sign Up!"}
         onTouchCallback={() => navigation.reset({index: 0, routes: [{name: "SignUp"}]})}
       />
+      <OrDelimiter/>
+      <FacebookButton/>
     </View>
   )
 }

@@ -5,13 +5,12 @@ import {StyleSheet} from "react-native";
 export const styles = StyleSheet.create({
   ...PROJECT_STYLES,
   loginInput: {
-    height: 50,
     marginBottom: 10,
     fontFamily: "Roboto",
     fontSize: 30,
     borderBottomWidth: 1.25,
     borderBottomColor: "#A09C98",
-    marginTop: 10,
+    marginTop: 15,
     color: "#4B4845"
   },
   loginInputError: {
@@ -29,8 +28,8 @@ export const styles = StyleSheet.create({
     color: "#FA7268"
   },
   inputView: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#A09C98",
+    // borderBottomWidth: 1.25,
+    // borderBottomColor: "#A09C98",
   },
   buttonTitle: {
     fontSize: 48,
@@ -61,6 +60,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 40
   },
-  facebookButton:{
+  line: {
+    borderBottomColor: "#A09C98",
+    borderBottomWidth: 1.2,
+    width: "100%"
   }
+  
 })

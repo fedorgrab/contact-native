@@ -3,7 +3,10 @@ import server from "../../../server";
 
 export async function signUpOnPress(navigation, username, password, password2, email, setFormValidErrors) {
   if (password !== password2) {
-    setFormValidErrors({"password": "Passwords are different"})
+    setFormValidErrors({
+      "password": "Invalid values",
+      "password2": "Passwords should be the same"
+    })
   } else {
     try {
       let response = await server.signUp(email, username, password)

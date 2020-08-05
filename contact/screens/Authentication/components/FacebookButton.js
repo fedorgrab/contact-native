@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
-import {Text, View, TouchableOpacity} from "react-native";
-import {styles} from "./styles";
+import {View, TouchableOpacity} from "react-native";
+import {styles} from "../styles";
 
 const OrganicFacebookShape = () => {
   return (

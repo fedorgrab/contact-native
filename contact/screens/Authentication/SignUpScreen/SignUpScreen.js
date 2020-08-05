@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {View} from "react-native";
-import {styles} from "../styles";
 import TextField from "../../components/TextField";
 import MenuButton from "../../components/MenuButton";
-import {signUpOnPress} from "./service";
 import Logo from "../../components/Logo"
+import AuthNavigationBlock from "../components/AuthNavigationBlock";
+import {styles} from "../styles";
 import {useValidationHandling} from "../service";
-import AuthNavigationBlock from "../../components/AuthNavigationBlock";
+import {signUpOnPress} from "./service";
+import OrDelimiter from "../components/OrDelimiter";
+import FacebookButton from "../components/FacebookButton";
 
-const initialErrorsState = {email: "", username: "", password: ""}
+const initialErrorsState = {email: "", username: "", password: "", password2: ""}
 
 
 const SignUpScreen = ({navigation}) => {
@@ -29,12 +31,12 @@ const SignUpScreen = ({navigation}) => {
           placeholder={"Email"}
           validErrorText={formValidErrors.email}
         />
-        <TextField
-          setText={(username) => presetDecorator(setUsername, {username})}
-          text={username}
-          placeholder={"Username"}
-          validErrorText={formValidErrors.username}
-        />
+        {/*<TextField*/}
+        {/*  setText={(username) => presetDecorator(setUsername, {username})}*/}
+        {/*  text={username}*/}
+        {/*  placeholder={"Username"}*/}
+        {/*  validErrorText={formValidErrors.username}*/}
+        {/*/>*/}
         <TextField
           setText={(password) => presetDecorator(setPassword, {password})}
           text={password}
@@ -47,6 +49,7 @@ const SignUpScreen = ({navigation}) => {
           text={password2}
           password={true}
           placeholder={"Confirm Password"}
+          validErrorText={formValidErrors.password2}
         />
       </View>
       <MenuButton title={"Sign Up"} onPress={() =>
@@ -57,6 +60,8 @@ const SignUpScreen = ({navigation}) => {
         linkText={"Log In!"}
         onTouchCallback={() => navigation.reset({index: 0, routes: [{name: "Login"}]})}
       />
+      <OrDelimiter/>
+      <FacebookButton/>
     </View>
   )
 }

@@ -5,7 +5,7 @@ import React from "react";
 
 const TextField = ({text, setText, placeholder, validErrorText, password = false}) => {
   return (
-    <View style={setText.inputView}>
+    <View style={styles.inputView}>
       <TextInput
         style={validErrorText ? styles.loginInputError : styles.loginInput}
         placeholder={placeholder}

@@ -1,4 +1,4 @@
-const HOST_ADDR = "http://172.20.10.3:8003";
+const HOST_ADDR = "http://10.0.0.223:8003";
 
 
 async function request(method, endpoint, body) {
