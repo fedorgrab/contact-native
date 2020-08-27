@@ -1,12 +1,10 @@
-// const HOST_ADDR_WS = "ws://10.0.0.223:8003/ws/contact-game";
-const HOST_ADDR_WS = "ws://172.20.10.3:8003/ws/contact-game";
+import {WS_HOST_ADDR} from "../../../application/constants";
+
 let websocket;
 
 function openGameConnection() {
-  websocket = new WebSocket(HOST_ADDR_WS);
-  websocket.onopen = () => {
-    console.log("OPENED")
-  }
+  websocket = new WebSocket(WS_HOST_ADDR);
+  websocket.onopen = () => console.log("OPENED")
 }
 
 function connectionOnMessage(delegateEventCallback, delegateErrorCallback) {

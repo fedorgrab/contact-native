@@ -1,4 +1,4 @@
-const HOST_ADDR = "http://10.0.0.223:8003";
+import {HTTP_HOST_ADDR} from "./application/constants";
 
 
 async function request(method, endpoint, body) {
@@ -8,7 +8,7 @@ async function request(method, endpoint, body) {
     credentials: "include",
     body: JSON.stringify(body)
   }
-  let response = await fetch(`${HOST_ADDR}${endpoint}`, requestOptions)
+  let response = await fetch(`${HTTP_HOST_ADDR}${endpoint}`, requestOptions)
   if (![200, 201].includes(response.status)) {
     throw {status: response.status, details: await response.json()}
   }

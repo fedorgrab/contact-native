@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {UserContext} from "../../application/context";
 import {GameStateContext, GameScreenContext,} from "./context";
-import GameSearchView from "./GameSearch";
+import GameSearchView from "./GameSearchView/GameSearchView";
 import GameHostView from "./GameHostView/GameHostView";
 import GamePlayerView from "./GamePlayerView/GamePlayerView";
 import InfoModal from "./components/InfoModal";
